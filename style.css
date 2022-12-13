@@ -4,6 +4,18 @@ body {
  
 
 }
+.index-main{
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  height: 60vh;
+  width: 100vw;
+}
+.index-item{
+  margin-left: 10px;
+  margin-right: 10px;
+}
 .banner {
   background-color: white;
   /* background-color: #494949; */
@@ -12,7 +24,7 @@ body {
   padding-top: 10px;
   padding-left: 72px;
   padding-right: 72px;
-   border-bottom-width: 1px;
+  border-bottom-width: 1px;
   border-bottom-style: solid; 
   border-bottom-color: #007bff;;
   z-index: 99;

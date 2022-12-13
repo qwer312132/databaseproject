@@ -3,34 +3,37 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Index</title>
+    <title>Home</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 
 <body>
-    <header class="banner">
-        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-            <li class="nav-item" role="presentation">
-                <a class="nav-link active" href="index.php">Index </a>
-            </li>
-            <li class="nav-item" role="presentation">
-                <a class="nav-link" href="laptop_query.php"> Laptop </a>
-            </li>
-            <li class="nav-item" role="presentation">
-                <a class="nav-link" href="customer_query.php"> Customer </a>
-            </li>
-            <li class="nav-item" role="presentation">
-                <a class="nav-link" href="supplier_query.php"> Supplier </a>
-            </li>
-            <li class="nav-item" role="presentation">
-                <a class="nav-link" href="trade_query.php"> Trade </a>
-            </li>
-            <li class="nav-item" role="presentation">
-                <a class="nav-link" href="search.php"> Search </a>
-            </li>
-        </ul>
-    </header>
-
+    <div class="index-main">
+        <button type="button" class="btn btn-primary btn-lg">
+            Detailed transaction information</button>
+        <div style="width: 100%; background-color: red;">
+        </div>
+        <a href="laptop_query.php">
+            <button type="button" class="btn btn-primary btn-lg index-item">
+                Laptop
+            </button>
+        </a>
+        <a href="customer_query.php">
+            <button type="button" class="btn btn-primary btn-lg index-item">
+                Customer
+            </button>
+        </a>
+        <a href="supplier_query.php">
+            <button type="button" class="btn btn-primary btn-lg index-item">
+                Supplier
+            </button>
+        </a>
+        <a href="trade_query.php">
+            <button type="button" class="btn btn-primary btn-lg index-item">
+                Trade
+            </button>
+        </a>
+    </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

@@ -4,8 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Customer</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
 </head>
 
@@ -13,7 +12,7 @@
     <header class="banner">
         <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
             <li class="nav-item" role="presentation">
-                <a class="nav-link " href="index.php">Index </a>
+                <a class="nav-link " href="index.php">Home </a>
             </li>
             <li class="nav-item" role="presentation">
                 <a class="nav-link" href="laptop_query.php"> Laptop </a>
@@ -57,11 +56,11 @@
         include_once "db_conn.php";
 
         if (isset($_POST['button1'])) {
-            $query = sprintf("select * from customer where customer_city='%s'",$_POST['city']);
+            $query = sprintf("select * from customer where customer_city='%s'", $_POST['city']);
             $stmt = $db->prepare($query);
             $stmt->execute();
             $result = $stmt->fetchALL();
-            if (count($result)){
+            if (count($result)) {
 
                 echo "<table border='1'>
                 <tr>

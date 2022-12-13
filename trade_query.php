@@ -11,7 +11,7 @@
     <header class="banner">
         <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
             <li class="nav-item" role="presentation">
-                <a class="nav-link " href="index.php">Index </a>
+                <a class="nav-link " href="index.php">Home </a>
             </li>
             <li class="nav-item" role="presentation">
                 <a class="nav-link" href="laptop_query.php"> Laptop </a>
