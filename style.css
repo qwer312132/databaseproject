@@ -1,7 +1,14 @@
+:root {
+  --bg-url: url("https://images.unsplash.com/photo-1661961111184-11317b40adb2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1172&q=80");
+}
 body {
   padding: 0;
   margin: 0;
- 
+  background-image: var(--bg-url);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
 
 }
 .index-main{
@@ -77,6 +84,12 @@ body {
   padding-top: 10px;
   padding-left: 72px;
   padding-right: 72px;
+
+  background-image: var(--bg-url);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
 }
 .tab{
 
