@@ -31,7 +31,7 @@
             </li>
         </ul>
     </header>
-    <div class="main">
+    <div class="main" background="https://images.unsplash.com/photo-1593160758246-02187660fd9f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80">
         <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
             <li class="nav-item" role="presentation">
                 <a class="nav-link active" href="customer_query.php">Query</a>
