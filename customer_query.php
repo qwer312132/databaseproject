@@ -4,11 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Customer</title>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
-        crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.2.js" integrity="sha256-pkn2CUZmheSeyssYw3vMp1+xyub4m+e+QK4sQskvuo4=" crossorigin="anonymous"></script>
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
 </head>
 
@@ -46,8 +44,7 @@
         </ul>
         <form method='post'>
             <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
-                    data-bs-toggle="dropdown" aria-expanded="false">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                     Dropdown button
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
@@ -69,46 +66,18 @@
                 </ul>
             </div>
         </form>
-        <form method='post'>
+        <form id="formsearch">
             <div class='input-group'>
                 <div class='form-outline'>
-                    <input type='search' id='form1' placeholder='Search' class='form-control' name='S' />
+                    <input type='search' id='search' placeholder='Search' class='form-control' name='S' />
                 </div>
-                <button type='submit' class='btn btn-primary' name='search'>
+                <button class='btn btn-primary' name='search' id="searchbt">
                     <i class='fas fa-search'></i>
                 </button>
             </div>
         </form>
-        <!-- customer_query.php -->
-        <?php
-        session_start();
-        include_once "db_conn.php";
-        $_SESSION['condition'];
-        // searchbar("temp");
-        if (isset($_POST['name'])) {
-            
-            $_SESSION['condition'] = 'name';
-            // Search($_SESSION['condition'], $db);
-            echo $_SESSION['condition'];
-        } 
-        else if (isset($_POST['city'])) {
-            $_SESSION['condition'] = 'city';
-        }
-        else if (isset($_POST['street'])) {
-            $_SESSION['condition'] = 'street';
-        } 
-        // function Search($_SESSION['condition'], $db){
-        if (isset($_POST['search'])) {
-            
-            #echo $_SESSION['condition'];
-            $query = sprintf("select * from customer where customer_%s='%s'", $_SESSION['condition'], $_POST['S']);
-            $stmt = $db->prepare($query);
-            $stmt->execute();
-            $result = $stmt->fetchALL();
-            if (count($result)) {
 
-                echo "
-                    <table class='table'>
+        <!-- <table class='table'>
                     <thead class='thead-dark'>
                     <tr>
                     <th scope='col'>ID</th>
@@ -117,22 +86,47 @@
                     <th scope='col'>customer_city</th>
                     </tr>
                     </thead>
-                    <tbody>
-                    "
-                    ;
-                for ($i = 0; $i < count($result); $i++) {
-                    echo "<tr>";
-                    echo "<td>" . $result[$i][0] . "</td>";
-                    echo "<td>" . $result[$i][1] . "</td>";
-                    echo "<td>" . $result[$i][2] . "</td>";
-                    echo "<td>" . $result[$i][3] . "</td>";
-                    echo "</tr>";
-                }
-                echo "</tbody></table>";
-            }
-        }
+                    <tbody> -->
 
-        ?>
+        <script>
+            function exhibit(data) {
+                let statement = "<table class='table'><thead class='thead-dark'><tr><th scope='col'>ID</th><th scope='col'>customer_name</th><th scope='col'>customer_street</th><th scope='col'>customer_city</th></tr> </thead><tbody>";
+
+                for(let i = 0; i < data.length; i++) {
+                    statement += "<tr><td>" + data[i].CustomerID + "</td><td>" + data[i].CustomerName + "</td><td>" + data[i].CustomerPhone + "</td></tr>";
+                }
+                console.log(statement);
+                $('#formsearch').after(statement);
+            };
+
+
+            $("#searchbt").click(function(event) {
+                event.preventDefault();
+                let search = $("#search").val();
+                if(search == "") {
+                    alert("Please enter a search term");
+                } 
+                else 
+                {
+                    $.ajax({
+                        url: "customer_search.php",
+                        method: "post",
+                        data: {
+                            search: search
+                        },
+                        success: function(res) {
+                            res = JSON.parse(res);
+                            console.log(res);
+                            exhibit(res.data);
+                            console.log(res.data);
+                        }
+                    });
+                }
+            });
+            
+        </script>
+        <!-- customer_query.php -->
+        <!--  -->
     </div>
 </body>
 
@@ -141,3 +135,4 @@
 <style type="text/css">
     @import url("style.css")
 </style>
+
