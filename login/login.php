@@ -46,8 +46,8 @@
                     <!--action="Loginback.php" method="post" -->
                     <!-- Email input -->
                     <div class="form-outline mb-4">
-                        <input type="text" id="loginName" name="loginName" class="form-control" />
-                        <label class="form-label" for="loginName">使用者信箱</label>
+                        <input type="text" id="loginEmail" name="loginEmail" class="form-control" />
+                        <label class="form-label" for="loginEmail">使用者信箱</label>
                     </div>
 
                     <!-- Password input -->
@@ -87,7 +87,7 @@
                     </div>
 
                     <!-- Submit button -->
-                    <button type="submit" class="btn btn-primary btn-block mb-3" id="register">註冊</button>
+                    <button type="submit" class="btn btn-primary btn-block mb-3">註冊</button>
                 </form>
             </div>
         </div>
@@ -101,9 +101,48 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.2.1/dist/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
     <!--- import --->
     <script>
+        function check(data) 
+        {
+            alert("check");
+            if (data.message == "使用者不存在") 
+            {
+                alert("使用者不存在");
+            } 
+            else if (data.message == "密碼錯誤") 
+            {
+                alert("密碼錯誤");
+            } 
+            else 
+            {
+                alert("登入成功");
+            }
+        };
+
+
         $("#login").on("submit", function(event) {
             event.preventDefault();
-            
+            let useremail = $("#loginEmail").val();
+            let pass = $("#loginPassword").val();
+            if (useremail == "" || pass == "") {
+                alert("請輸入完整資料");
+                return;
+            } else {
+                $.ajax({
+                    url: "loginback.php",
+                    method: "post",
+                    data: {
+                        useremail: useremail,
+                        pass: pass
+                    },
+                    success: function(res) 
+                    {
+                        res = JSON.parse(res);
+                        console.log(res);
+                        check(res);
+                    }
+                });
+            }
+            location.href = "../index.php";
         });
 
         $("#register").on("submit", function(event) {
@@ -116,19 +155,18 @@
             if (name == "" || useremail == "" || pass == "" || repeatpass == "") {
                 alert("請輸入完整資料");
                 return;
-            }
-            else if (pass != repeatpass) {
+            } else if (pass != repeatpass) {
                 alert("密碼不一致");
                 return;
-            }
-            else if (pass == repeatpass) {
+            } else if (pass == repeatpass) {
                 $.ajax({
                     url: "register.php",
                     method: "post",
                     data: {
                         name: name,
                         useremail: useremail,
-                        pass: pass},
+                        pass: pass
+                    },
                     success: function(res) {
                         res = JSON.parse(res);
                         console.log(res);

@@ -3,7 +3,7 @@
     try{
         $name = $_POST["search"];
        
-        include 'db_conn.php';
+        include '../db_conn.php';
         $query = ("select * from customer where CustomerName = ?");
         $stmt =  $db->prepare($query);
         $error= $stmt->execute(array($name));
