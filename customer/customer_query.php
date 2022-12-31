@@ -97,7 +97,9 @@
         </div>
         <script>
             function exhibit(data) {
-                let statement = "<table class='table table-striped table-dark'><thead class='thead-dark'><tr><th scope='col'>ID</th><th scope='col'>customer_name</th><th scope='col'>customerPhone</th></tr> </thead><tbody>";
+                let statement = "<table class='table table-striped table-dark'>" +
+                "<thead class='thead-dark'>"+
+                "<tr><th scope='col'>ID</th><th scope='col'>customer_name</th><th scope='col'>customerPhone</th><th scope='col'>more function</th></tr> </thead><tbody>";
 
                 for (let i = 0; i < data.length; i++) {
                     statement += "<tr id=tr" + i + "><td id=cus" + i + ">" + data[i].CustomerID + "</td><td id=name" + i + ">" + data[i].CustomerName + "</td><td id=phone" + i + ">" + data[i].CustomerPhone + "</td><td>" +
