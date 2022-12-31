@@ -1,12 +1,18 @@
 <?php
     $res=array();
+    $test=array();
     try{
-        $name = $_POST["search"];
-       
         include '../db_conn.php';
-        $query = ("select * from customer where CustomerName = ?");
+        $name = $_POST["search"];
+        $condition =$_POST["condition"];
+        array_push($test,$name);
+        array_push($test,$condition);
+        $query = ("select * from customer where ? = ?");
         $stmt =  $db->prepare($query);
-        $error= $stmt->execute(array($name));
+        $stmt->execute(array("CustomerName","A"));
+        // $query = ("select * from customer where CustomerName = 'A'");
+        // $stmt =  $db->prepare($query);
+        // $result=$stmt->execute();
         $result = $stmt->fetchAll();
         $res["data"] = array();
         for($i=0;$i<count($result);$i++){
@@ -24,4 +30,5 @@
         $res["message"] = $e->getMessage();
     }
     echo json_encode($res);
+    // echo json_encode($test);
 ?>

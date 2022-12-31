@@ -51,23 +51,23 @@
         </ul>
         <form method='post'>
             <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdown" data-bs-toggle="dropdown" aria-expanded="false">
                     Dropdown button
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                     <li>
-                        <button name='name'>
-                            name
+                        <button name='cid' class="btn btn-light btn-block" id="cid" onclick="dropdownvalue('CustomerID')">
+                            ID
                         </button>
                     </li>
                     <li>
-                        <button name='street'>
-                            street
+                        <button name='cname' class="btn btn-light btn-block" id="cname" onclick="dropdownvalue('CustomerName')">
+                            NAME
                         </button>
                     </li>
                     <li>
-                        <button name='city'>
-                            city
+                        <button name='cphone' class="btn btn-light btn-block" id="cphone" onclick="dropdownvalue('CustomerPhone')">
+                            PHONE
                         </button>
                     </li>
                 </ul>
@@ -85,7 +85,7 @@
         </form>
         <script>
             function exhibit(data) {
-                let statement = "<table class='table'><thead class='thead-dark'><tr><th scope='col'>ID</th><th scope='col'>customer_name</th><th scope='col'>customerPhone</th></tr> </thead><tbody>";
+                let statement = "<table class='table table-striped table-dark'><thead class='thead-dark'><tr><th scope='col'>ID</th><th scope='col'>customer_name</th><th scope='col'>customerPhone</th></tr> </thead><tbody>";
 
                 for (let i = 0; i < data.length; i++) {
                     statement += "<tr id=tr" + i + "><td id=cus" + i + ">" + data[i].CustomerID + "</td><td id=name" + i + ">" + data[i].CustomerName + "</td><td id=phone" + i + ">" + data[i].CustomerPhone + "</td><td>" +
@@ -160,7 +160,7 @@
                     "</td><td>" +
                     "<button class='btn btn-primary' name='search' id='po'><i class='fas fa-search'></i></button>" +
                     "</td></tr>";
-                $('#tr0').after(statement);
+                $('#tr0').before(statement);
                 $("#po").click(function() {
                     event.preventDefault();
                     let name = $("#newname").val();
@@ -175,6 +175,7 @@
                         success: function(res) {
                             res = JSON.parse(res);
                             console.log(res);
+                            location.reload();
                         }
                     });
                 });
@@ -185,6 +186,7 @@
             $("#searchbt").click(function(event) {
                 event.preventDefault();
                 let search = $("#search").val();
+                let condition = $("#dropdown").text();
                 if (search == "") {
                     alert("Please enter a search term");
                 } else {
@@ -192,7 +194,8 @@
                         url: "customer_search.php",
                         method: "post",
                         data: {
-                            search: search
+                            search: search,
+                            condition: condition
                         },
                         success: function(res) {
                             res = JSON.parse(res);
@@ -203,6 +206,14 @@
                     });
                 }
             });
+
+            function dropdownvalue(x){
+                event.preventDefault();
+                $("#dropdown").html(x);
+                $("#search").attr("placeholder",x);
+
+            }
+
         </script>
         <!-- customer_query.php -->
         <!--  -->
