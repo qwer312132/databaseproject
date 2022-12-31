@@ -87,14 +87,15 @@
             <form id="formsearch">
                 <div class='input-group'>
                     <div class='form-outline'>
-                        <input type='search' id='search' placeholder='Search' class='form-control' name='S' />
+                        <input type='search' id='search' placeholder='Search' class='form-control' name='S' style="width: 100px;" />
                     </div>
-                    <button class='btn btn-primary' name='search' id="searchbt">
+                    <button class='btn btn-primary' name='search' id="searchbt" style="float:left">
                         <i class='fas fa-search'></i>
                     </button>
                 </div>
             </form>
         </div>
+        <div id="maintable"></div>
         <script>
             function exhibit(data) {
                 let statement = "<table class='table table-striped table-dark'>" +
@@ -108,7 +109,7 @@
                         "</td></tr>";
                 }
                 console.log(statement);
-                $('#formsearch').after(statement);
+                $("#maintable").html(statement);
                 for (let i = 0; i < data.length; i++) {
                     $("#update" + i).click(function () {
                         event.preventDefault();
