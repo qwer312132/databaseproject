@@ -7,9 +7,9 @@
         $condition =$_POST["condition"];
         array_push($test,$name);
         array_push($test,$condition);
-        $query = ("select * from customer where ? = ?");
+        $query = sprintf("select * from customer where %s = ?",$condition);
         $stmt =  $db->prepare($query);
-        $stmt->execute(array("CustomerName","A"));
+        $stmt->execute(array($name));
         // $query = ("select * from customer where CustomerName = 'A'");
         // $stmt =  $db->prepare($query);
         // $result=$stmt->execute();
