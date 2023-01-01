@@ -52,7 +52,7 @@
         </ul>
         <?php echo "<span>" . $_SESSION["UserName"] . "</span>"; ?>
     </header>
-    <div style="display:none;position: fixed;top:10%;left:50%;" id="qwer"><button type="button" class="btn btn-danger" id="ale">Danger</button></div>
+    <div style="display:none;position: fixed;top:10%;left:0%;z-index:100" id="ale"><button type="button" class="btn btn-danger" id="alemessage" style="font-size:medium">Danger</button></div>
     <div class="main">
         <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
             <li class="nav-item" role="presentation"
@@ -165,7 +165,6 @@
                                     war: war
                                 },
                                 success: function (data) {
-                                    alert(data);
                                     location.reload();
                                 }
                             });
@@ -182,14 +181,6 @@
                                 id: id
                             },
                             success: function (data) {
-                                $.boostrapGrowl(data, {
-                                    type: 'danger',
-                                    align: 'center',
-                                    width: 'auto',
-                                    allow_dismiss: false
-                                });
-
-                                alert(data);
                                 location.reload();
                             }
                         });
@@ -232,8 +223,12 @@
                         success: function (res) {
                             res = JSON.parse(res);
                             console.log(res);
-                            // alert(res);
-                            location.reload();
+                            if (res.status == 500){
+                                document.getElementById("ale").style.display = "block";
+                                $("#alemessage").text(res.message);
+                            }
+                            else
+                                location.reload();
                         }
                     });
                 });
@@ -243,7 +238,7 @@
 
             $("#searchbt").click(function (event) {
                 event.preventDefault();
-                document.getElementById("qwer").style.display = "block";
+                
                 let search = $("#search").val();
                 let condition = $("#dropdown").text();
                 if (search == "" && condition != "all") {
@@ -276,6 +271,7 @@
             };
             $("#ale").click(function (event) {
                 $("#ale").hide();
+                location.reload();
             });
 
 

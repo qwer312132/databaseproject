@@ -103,7 +103,6 @@
     <script>
         function check(data) 
         {
-            alert("check");
             if (data.message == "使用者不存在") 
             {
                 alert("使用者不存在");

@@ -49,6 +49,7 @@
         echo "<span>" . $_SESSION['UserName'] . "</span>"
             ?>
     </header>
+    <div style="display:none;position: fixed;top:10%;left:0%;z-index:100" id="ale"><button type="button" class="btn btn-danger" id="alemessage" style="font-size:medium">Danger</button></div>
     <div class="main">
         <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
             <li class="nav-item" role="presentation">
@@ -147,7 +148,6 @@
                                     phone: phone
                                 },
                                 success: function (data) {
-                                    alert(data.message);
                                     location.reload();
                                 }
                             });
@@ -164,7 +164,6 @@
                                 id: id
                             },
                             success: function (data) {
-                                alert(data);
                                 location.reload();
                             }
                         });
@@ -197,8 +196,12 @@
                         },
                         success: function (res) {
                             res = JSON.parse(res);
-                            console.log(res);
-                            location.reload();
+                            if (res.status == 500){
+                                document.getElementById("ale").style.display = "block";
+                                $("#alemessage").text(res.message);
+                            }
+                            else
+                                location.reload();
                         }
                     });
                 });
@@ -240,6 +243,10 @@
                 $("#search").attr("placeholder", x);
 
             }
+            $("#ale").click(function (event) {
+                $("#ale").hide();
+                location.reload();
+            });
         </script>
         <!-- customer_query.php -->
         <!--  -->
