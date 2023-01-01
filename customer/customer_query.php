@@ -5,15 +5,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Customer</title>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
-        crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" />
-    <script src="https://code.jquery.com/jquery-3.6.2.js"
-        integrity="sha256-pkn2CUZmheSeyssYw3vMp1+xyub4m+e+QK4sQskvuo4=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.2.js" integrity="sha256-pkn2CUZmheSeyssYw3vMp1+xyub4m+e+QK4sQskvuo4=" crossorigin="anonymous"></script>
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
     <style>
         th {
@@ -44,10 +40,20 @@
             <li class="nav-item" role="presentation">
                 <a class="nav-link" href="../joinsearch/total.php"> Search </a>
             </li>
+            <a style="width: 400px;"></a>
+            <li class="nav-item" role="presentation" style="display: flex;justify-content: center;align-items: center; ">
+                <img src="https://cdn-icons-png.flaticon.com/512/6386/6386976.png" width="20px" height="20px">
+            </li>
+            <li class="nav-item" role="presentation">
+                <a class="nav-link"> UserName </a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a class="nav-link"> Sign Out</a>
+            </li>
         </ul>
         <?php
-        echo "<span>" . $_SESSION['UserName'] . "</span>"
-            ?>
+        // echo "<span>" . $_SESSION['UserName'] . "</span>"
+        ?>
     </header>
     <div style="display:none;position: fixed;top:10%;left:0%;z-index:100" id="ale"><button type="button" class="btn btn-danger" id="alemessage" style="font-size:medium">Danger</button></div>
     <div class="main">
@@ -55,16 +61,14 @@
             <li class="nav-item" role="presentation">
                 <a class="nav-link active" href="customer_query.php">Query</a>
             </li>
-            <li class="nav-item" role="presentation"
-                style="display: flex;justify-content: center;align-items: center; ">
+            <li class="nav-item" role="presentation" style="display: flex;justify-content: center;align-items: center; ">
                 <button type="button" class="btn btn-primary" id="create">新增</button>
             </li>
         </ul>
         <div>
             <form style="text-align: left;margin-bottom: 10px;" method='post'>
                 <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdown"
-                        data-bs-toggle="dropdown" aria-expanded="false">all</button>
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdown" data-bs-toggle="dropdown" aria-expanded="false">all</button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                         <li>
                             <button name='all' class="btn btn-light btn-block" id="all" onclick="dropdownvalue('all')">
@@ -72,20 +76,17 @@
                             </button>
                         </li>
                         <li>
-                            <button name='cid' class="btn btn-light btn-block" id="cid"
-                                onclick="dropdownvalue('CustomerID')">
+                            <button name='cid' class="btn btn-light btn-block" id="cid" onclick="dropdownvalue('CustomerID')">
                                 ID
                             </button>
                         </li>
                         <li>
-                            <button name='cname' class="btn btn-light btn-block" id="cname"
-                                onclick="dropdownvalue('CustomerName')">
+                            <button name='cname' class="btn btn-light btn-block" id="cname" onclick="dropdownvalue('CustomerName')">
                                 NAME
                             </button>
                         </li>
                         <li>
-                            <button name='cphone' class="btn btn-light btn-block" id="cphone"
-                                onclick="dropdownvalue('CustomerPhone')">
+                            <button name='cphone' class="btn btn-light btn-block" id="cphone" onclick="dropdownvalue('CustomerPhone')">
                                 PHONE
                             </button>
                         </li>
@@ -95,8 +96,7 @@
             <form id="formsearch">
                 <div class='input-group'>
                     <div class='form-outline'>
-                        <input type='search' id='search' placeholder='all' class='form-control' name='S'
-                            style="width: 200px;" />
+                        <input type='search' id='search' placeholder='all' class='form-control' name='S' style="width: 200px;" />
                     </div>
                     <button class='btn btn-primary' name='search' id="searchbt" style="float:left">
                         <i class='fas fa-search'></i>
@@ -120,7 +120,7 @@
                 console.log(statement);
                 $("#maintable").html(statement);
                 for (let i = 0; i < data.length; i++) {
-                    $("#update" + i).click(function () {
+                    $("#update" + i).click(function() {
                         event.preventDefault();
                         let id = $("#cus" + i).text();
                         let name = $("#name" + i).text();
@@ -134,7 +134,7 @@
                             "<button class='btn btn-primary' name='search' id=del" + i + ">-</button>" +
                             "</td></tr>";
                         $("#tr" + i).replaceWith(statement);
-                        $("#update" + i).click(function () {
+                        $("#update" + i).click(function() {
                             event.preventDefault();
                             let id = $("#cus" + i).text();
                             let name = $("#name" + i).val();
@@ -147,14 +147,14 @@
                                     name: name,
                                     phone: phone
                                 },
-                                success: function (data) {
+                                success: function(data) {
                                     location.reload();
                                 }
                             });
                         });
                     });
 
-                    $("#del" + i).click(function () {
+                    $("#del" + i).click(function() {
                         event.preventDefault();
                         let id = $("#cus" + i).text();
                         $.ajax({
@@ -163,7 +163,7 @@
                             data: {
                                 id: id
                             },
-                            success: function (data) {
+                            success: function(data) {
                                 location.reload();
                             }
                         });
@@ -171,7 +171,7 @@
                 }
             };
 
-            $("#create").click(function () {
+            $("#create").click(function() {
                 event.preventDefault();
                 let statement = "<tr ><td>" +
                     "<input type='text'  class='form-control' disabled='disabled'>" +
@@ -183,7 +183,7 @@
                     "<button class='btn btn-primary' name='search' id='po'><i class='fa fa-check' aria-hidden='true'></i></button>" +
                     "</td></tr>";
                 $('#tr0').before(statement);
-                $("#po").click(function () {
+                $("#po").click(function() {
                     event.preventDefault();
                     let name = $("#newname").val();
                     let phone = $("#newphone").val();
@@ -194,13 +194,12 @@
                             name: name,
                             phone: phone
                         },
-                        success: function (res) {
+                        success: function(res) {
                             res = JSON.parse(res);
-                            if (res.status == 500){
+                            if (res.status == 500) {
                                 document.getElementById("ale").style.display = "block";
                                 $("#alemessage").text(res.message);
-                            }
-                            else
+                            } else
                                 location.reload();
                         }
                     });
@@ -209,11 +208,11 @@
 
 
 
-            $("#searchbt").click(function (event) {
+            $("#searchbt").click(function(event) {
                 event.preventDefault();
                 let search = $("#search").val();
                 let condition = $("#dropdown").text();
-                if (search == ""&&condition!="all") {
+                if (search == "" && condition != "all") {
                     alert("Please enter a search term");
                 } else {
                     if (condition == "all") {
@@ -227,7 +226,7 @@
                             search: search,
                             condition: condition
                         },
-                        success: function (res) {
+                        success: function(res) {
                             res = JSON.parse(res);
                             console.log(res);
                             exhibit(res.data);
@@ -243,7 +242,7 @@
                 $("#search").attr("placeholder", x);
 
             }
-            $("#ale").click(function (event) {
+            $("#ale").click(function(event) {
                 $("#ale").hide();
                 location.reload();
             });
