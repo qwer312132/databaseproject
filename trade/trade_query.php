@@ -63,9 +63,7 @@
             <form style="text-align: left;margin-bottom: 10px;" method='post'>
                 <div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdown"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                        Dropdown button
-                    </button>
+                        data-bs-toggle="dropdown" aria-expanded="false">all</button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                         <li>
                             <button name='all' class="btn btn-light btn-block" id="all" onclick="dropdownvalue('all')">
@@ -102,7 +100,7 @@
             <form id="formsearch">
                 <div class='input-group'>
                     <div class='form-outline'>
-                        <input type='search' id='search' placeholder='Search' class='form-control' name='S'
+                        <input type='search' id='search' placeholder='all' class='form-control' name='S'
                             style="width: 200px;" />
                     </div>
                     <button class='btn btn-primary' name='search' id="searchbt" style="float:left">
@@ -227,7 +225,7 @@
                 event.preventDefault();
                 let search = $("#search").val();
                 let condition = $("#dropdown").text();
-                if (search == "" && condition == "all") {
+                if (search == "" && condition != "all") {
                     alert("Please enter a search term");
                 } else {
                     if (condition == "all") {

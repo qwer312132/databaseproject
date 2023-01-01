@@ -14,6 +14,12 @@
     <script src="https://code.jquery.com/jquery-3.6.2.js"
         integrity="sha256-pkn2CUZmheSeyssYw3vMp1+xyub4m+e+QK4sQskvuo4=" crossorigin="anonymous"></script>
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <!--引入 element-ui 的样式，-->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <!-- 必须先引入vue，  后使用element-ui -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <!-- 引入element 的组件库-->
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
     <style>
         th {
             text-align: center !important;
@@ -46,6 +52,7 @@
         </ul>
         <?php echo "<span>" . $_SESSION["UserName"] . "</span>"; ?>
     </header>
+    <div style="display:none;position: fixed;top:10%;left:50%;" id="qwer"><button type="button" class="btn btn-danger" id="ale">Danger</button></div>
     <div class="main">
         <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
             <li class="nav-item" role="presentation"
@@ -60,13 +67,10 @@
             <form style="text-align: left;margin-bottom: 10px;" method='post'>
                 <div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdown"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                        Dropdown button
-                    </button>
+                        data-bs-toggle="dropdown" aria-expanded="false">all</button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                         <li>
-                            <button name='all' class="btn btn-light btn-block" id="all"
-                                onclick="dropdownvalue('all')">
+                            <button name='all' class="btn btn-light btn-block" id="all" onclick="dropdownvalue('all')">
                                 ALL
                             </button>
                         </li>
@@ -106,7 +110,7 @@
             <form id="formsearch">
                 <div class='input-group'>
                     <div class='form-outline'>
-                        <input type='search' id='search' placeholder='Search' class='form-control' name='S'
+                        <input type='search' id='search' placeholder='all' class='form-control' name='S'
                             style="width: 200px;" />
                     </div>
                     <button class='btn btn-primary' name='search' id="searchbt" style="float:left">
@@ -117,7 +121,7 @@
         </div>
         <div id="maintable"></div>
         <script>
-            function exhibit(data) {
+            function exhibit(data, m, M, a) {
                 let statement = "<table class='table table-striped table-dark'>" +
                     "<thead class='thead-dark'>" +
                     "<tr><th scope='col'>ID</th><th scope='col'>laptop_name</th><th scope='col'>supplier_name</th><th scope='col'>price</th><th scope='col'>warranty</th><th scope='col'>more function</th></tr> </thead><tbody>";
@@ -128,8 +132,8 @@
                         "<button class='btn btn-primary' name='search' id=del" + i + ">-</button>" +
                         "</td></tr>";
                 }
-                console.log(statement);
-                $("#maintable").html(statement);
+                let min = "<div style='font-size: 20px;;color:white;background-color: white;text-shadow: 0 0 5px #5b947f, 0 0 5px #5b947f, 0 0 5px #5b947f, 0 0 5px #5b947f; font-weight: bold;'>MIN PRICE = " + m + " AVEARGE PRICE = " + a + " MAX PRICE = " + M + "</div>";
+                $("#maintable").html(min + statement);
                 for (let i = 0; i < data.length; i++) {
                     $("#update" + i).click(function () {
                         event.preventDefault();
@@ -178,6 +182,13 @@
                                 id: id
                             },
                             success: function (data) {
+                                $.boostrapGrowl(data, {
+                                    type: 'danger',
+                                    align: 'center',
+                                    width: 'auto',
+                                    allow_dismiss: false
+                                });
+
                                 alert(data);
                                 location.reload();
                             }
@@ -232,6 +243,7 @@
 
             $("#searchbt").click(function (event) {
                 event.preventDefault();
+                document.getElementById("qwer").style.display = "block";
                 let search = $("#search").val();
                 let condition = $("#dropdown").text();
                 if (search == "" && condition != "all") {
@@ -250,9 +262,8 @@
                         },
                         success: function (res) {
                             res = JSON.parse(res);
-                            console.log(res);
-                            exhibit(res.data);
-                            console.log(res.min);
+                            // console.log(res);
+                            exhibit(res.data, res.min, res.max, res.avg);
                         }
                     });
                 }
@@ -262,8 +273,11 @@
                 event.preventDefault();
                 $("#dropdown").html(x);
                 $("#search").attr("placeholder", x);
+            };
+            $("#ale").click(function (event) {
+                $("#ale").hide();
+            });
 
-            }
 
         </script>
         <!-- customer_query.php -->

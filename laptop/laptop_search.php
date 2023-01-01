@@ -25,7 +25,17 @@
         $stmt =  $db->prepare($query);
         $stmt->execute(array($name));
         $result = $stmt->fetchAll();
-        $res["min"] = $result;
+        $res["min"] = $result[0]['MIN(Price)'];
+        $query = sprintf("select MAX(Price) from laptop where %s = ?",$condition);
+        $stmt =  $db->prepare($query);
+        $stmt->execute(array($name));
+        $result = $stmt->fetchAll();
+        $res["max"] = $result[0]['MAX(Price)'];
+        $query = sprintf("select AVG(Price) from laptop where %s = ?",$condition);
+        $stmt =  $db->prepare($query);
+        $stmt->execute(array($name));
+        $result = $stmt->fetchAll();
+        $res["avg"] = $result[0]['AVG(Price)'];
         $res["status"] = 200;
         $res["message"] = "OK";
     }
