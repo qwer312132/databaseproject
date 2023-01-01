@@ -10,8 +10,10 @@
 
 <body>
     <div class="index-main">
+    <a href="joinsearch/total.php">
         <button type="button" class="btn btn-primary btn-lg">
             Detailed transaction information</button>
+    </a>
         <div style="width: 100%; background-color: red;">
         </div>
         <a href="laptop/laptop_query.php">

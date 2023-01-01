@@ -10,9 +10,6 @@
         $query = sprintf("select * from laptop where %s = ?",$condition);
         $stmt =  $db->prepare($query);
         $stmt->execute(array($name));
-        // $query = ("select * from customer where CustomerName = 'A'");
-        // $stmt =  $db->prepare($query);
-        // $result=$stmt->execute();
         $result = $stmt->fetchAll();
         $res["data"] = array();
         for($i=0;$i<count($result);$i++){
@@ -24,6 +21,11 @@
             $row["Warranty"] = $result[$i]['Warranty(year)'];
             array_push($res["data"],$row);
         }
+        $query = sprintf("select MIN(Price) from laptop where %s = ?",$condition);
+        $stmt =  $db->prepare($query);
+        $stmt->execute(array($name));
+        $result = $stmt->fetchAll();
+        $res["min"] = $result;
         $res["status"] = 200;
         $res["message"] = "OK";
     }

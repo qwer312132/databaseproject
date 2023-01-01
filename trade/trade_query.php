@@ -68,6 +68,11 @@
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                         <li>
+                            <button name='all' class="btn btn-light btn-block" id="all" onclick="dropdownvalue('all')">
+                                ALL
+                            </button>
+                        </li>
+                        <li>
                             <button name='cid' class="btn btn-light btn-block" id="cid"
                                 onclick="dropdownvalue('TradeID')">
                                 TradeID
@@ -98,7 +103,7 @@
                 <div class='input-group'>
                     <div class='form-outline'>
                         <input type='search' id='search' placeholder='Search' class='form-control' name='S'
-                            style="width: 100px;" />
+                            style="width: 200px;" />
                     </div>
                     <button class='btn btn-primary' name='search' id="searchbt" style="float:left">
                         <i class='fas fa-search'></i>
@@ -222,9 +227,13 @@
                 event.preventDefault();
                 let search = $("#search").val();
                 let condition = $("#dropdown").text();
-                if (search == "") {
+                if (search == "" && condition == "all") {
                     alert("Please enter a search term");
                 } else {
+                    if (condition == "all") {
+                        search = "1";
+                        condition = "1";
+                    }
                     $.ajax({
                         url: "trade_search.php",
                         method: "post",

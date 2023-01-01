@@ -44,7 +44,7 @@
                 <a class="nav-link" href="../joinsearch/total.php"> Search </a>
             </li>
         </ul>
-        <?php echo "<span>" . $_SESSION["username"] . "</span>"; ?>
+        <?php echo "<span>" . $_SESSION["UserName"] . "</span>"; ?>
     </header>
     <div class="main">
         <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
@@ -64,6 +64,12 @@
                         Dropdown button
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li>
+                            <button name='all' class="btn btn-light btn-block" id="all"
+                                onclick="dropdownvalue('all')">
+                                ALL
+                            </button>
+                        </li>
                         <li>
                             <button name='lid' class="btn btn-light btn-block" id="lid"
                                 onclick="dropdownvalue('LaptopID')">
@@ -216,7 +222,7 @@
                             res = JSON.parse(res);
                             console.log(res);
                             // alert(res);
-                            // location.reload();
+                            location.reload();
                         }
                     });
                 });
@@ -228,9 +234,13 @@
                 event.preventDefault();
                 let search = $("#search").val();
                 let condition = $("#dropdown").text();
-                if (search == "") {
+                if (search == "" && condition != "all") {
                     alert("Please enter a search term");
                 } else {
+                    if (condition == "all") {
+                        search = "1";
+                        condition = "1";
+                    }
                     $.ajax({
                         url: "laptop_search.php",
                         method: "post",
@@ -242,7 +252,7 @@
                             res = JSON.parse(res);
                             console.log(res);
                             exhibit(res.data);
-                            console.log(res.data);
+                            console.log(res.min);
                         }
                     });
                 }

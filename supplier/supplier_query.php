@@ -5,11 +5,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Supplier</title>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" />
-    <script src="https://code.jquery.com/jquery-3.6.2.js" integrity="sha256-pkn2CUZmheSeyssYw3vMp1+xyub4m+e+QK4sQskvuo4=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.2.js"
+        integrity="sha256-pkn2CUZmheSeyssYw3vMp1+xyub4m+e+QK4sQskvuo4=" crossorigin="anonymous"></script>
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
     <style>
         th {
@@ -43,36 +47,46 @@
         </ul>
         <?php
         echo "<span>" . $_SESSION['UserName'] . "</span>"
-        ?>
+            ?>
     </header>
     <div class="main">
         <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
             <li class="nav-item" role="presentation">
                 <a class="nav-link active" href="customer_query.php">Query</a>
             </li>
-            <li class="nav-item" role="presentation" style="display: flex;justify-content: center;align-items: center; ">
+            <li class="nav-item" role="presentation"
+                style="display: flex;justify-content: center;align-items: center; ">
                 <button type="button" class="btn btn-primary" id="create">新增</button>
             </li>
         </ul>
         <div>
             <form style="text-align: left;margin-bottom: 10px;" method='post'>
                 <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdown"
+                        data-bs-toggle="dropdown" aria-expanded="false">
                         Dropdown button
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                         <li>
-                            <button name='sname' class="btn btn-light btn-block" id="sname" onclick="dropdownvalue('SupplierName')">
+                            <button name='all' class="btn btn-light btn-block" id="all" onclick="dropdownvalue('all')">
+                                ALL
+                            </button>
+                        </li>
+                        <li>
+                            <button name='sname' class="btn btn-light btn-block" id="sname"
+                                onclick="dropdownvalue('SupplierName')">
                                 NAME
                             </button>
                         </li>
                         <li>
-                            <button name='saddress' class="btn btn-light btn-block" id="saddress" onclick="dropdownvalue('SupplierAddress')">
+                            <button name='saddress' class="btn btn-light btn-block" id="saddress"
+                                onclick="dropdownvalue('SupplierAddress')">
                                 ADDRESS
                             </button>
                         </li>
                         <li>
-                            <button name='sphone' class="btn btn-light btn-block" id="sphone" onclick="dropdownvalue('SupplierPhone')">
+                            <button name='sphone' class="btn btn-light btn-block" id="sphone"
+                                onclick="dropdownvalue('SupplierPhone')">
                                 PHONE
                             </button>
                         </li>
@@ -82,7 +96,8 @@
             <form id="formsearch">
                 <div class='input-group'>
                     <div class='form-outline'>
-                        <input type='search' id='search' placeholder='Search' class='form-control' name='S' style="width: 100px;" />
+                        <input type='search' id='search' placeholder='Search' class='form-control' name='S'
+                            style="width: 200px;" />
                     </div>
                     <button class='btn btn-primary' name='search' id="searchbt" style="float:left">
                         <i class='fas fa-search'></i>
@@ -106,17 +121,17 @@
                 console.log(statement);
                 $("#maintable").html(statement);
                 for (let i = 0; i < data.length; i++) {
-                    $("#update" + i).click(function() {
+                    $("#update" + i).click(function () {
                         event.preventDefault();
-                        let sname=$("#sname"+i).text();
-                        let saddress=$("#saddress"+i).text();
-                        let sphone=$("#sphone"+i).text();
+                        let sname = $("#sname" + i).text();
+                        let saddress = $("#saddress" + i).text();
+                        let sphone = $("#sphone" + i).text();
                         let statement = "<tr id=tr" + i + "><td>" + sname + "</td><td><input type='text' class='form-control' id='saddress" + i + "' value='" + saddress + "'></td><td><input type='text' class='form-control' id='sphone" + i + "' value='" + sphone + "'></td><td>" +
                             "<button class='btn btn-primary' name='search' id=update" + i + ">update</button>" +
                             "<button class='btn btn-primary' name='search' id=del" + i + ">-</button>" +
                             "</td></tr>";
                         $("#tr" + i).replaceWith(statement);
-                        $("#update" + i).click(function() {
+                        $("#update" + i).click(function () {
                             event.preventDefault();
                             let sname = $("#sname" + i).val();
                             let saddress = $("#saddress" + i).val();
@@ -129,7 +144,7 @@
                                     saddress: saddress,
                                     sphone: sphone
                                 },
-                                success: function(data) {
+                                success: function (data) {
                                     alert(data);
                                     location.reload();
                                 }
@@ -137,16 +152,16 @@
                         });
                     });
 
-                    $("#del" + i).click(function() {
+                    $("#del" + i).click(function () {
                         event.preventDefault();
                         let sname = $("#sname" + i).text();
                         $.ajax({
                             url: "supplier_delete.php",
                             type: "POST",
                             data: {
-                                sname:sname
+                                sname: sname
                             },
-                            success: function(data) {
+                            success: function (data) {
                                 alert(data);
                                 location.reload();
                             }
@@ -155,7 +170,7 @@
                 }
             };
 
-            $("#create").click(function() {
+            $("#create").click(function () {
                 event.preventDefault();
                 let statement = "<tr><td>" + "<input type='text'  class='form-control' id='newsname'>" +
                     "</td><td>" + "<input type='text'  class='form-control' id='newsaddress'>" +
@@ -163,7 +178,7 @@
                     "</td><td>" + "<button class='btn btn-primary' name='search' id='po'><i class='fa fa-check' aria-hidden='true'></i></button>" +
                     "</td></tr>";
                 $('#tr0').before(statement);
-                $("#po").click(function() {
+                $("#po").click(function () {
                     event.preventDefault();
                     let sname = $("#newsname").val();
                     let saddress = $("#newsaddress").val();
@@ -176,7 +191,7 @@
                             saddress: saddress,
                             sphone: sphone
                         },
-                        success: function(res) {
+                        success: function (res) {
                             res = JSON.parse(res);
                             alert(res.message);
                             // console.log(res)
@@ -188,13 +203,17 @@
 
 
 
-            $("#searchbt").click(function(event) {
+            $("#searchbt").click(function (event) {
                 event.preventDefault();
                 let search = $("#search").val();
                 let condition = $("#dropdown").text();
-                if (search == "") {
+                if (search == "" && condition == "all") {
                     alert("Please enter a search term");
                 } else {
+                    if (condition == "all") {
+                        search = "1";
+                        condition = "1";
+                    }
                     $.ajax({
                         url: "supplier_search.php",
                         method: "post",
@@ -202,7 +221,7 @@
                             search: search,
                             condition: condition
                         },
-                        success: function(res) {
+                        success: function (res) {
                             res = JSON.parse(res);
                             console.log(res);
                             exhibit(res.data);

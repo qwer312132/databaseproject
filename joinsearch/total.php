@@ -25,7 +25,7 @@
                 <a class="nav-link " href="../index.php">Home </a>
             </li>
             <li class="nav-item" role="presentation">
-                <a class="nav-link active" href="laptop_query.php"> Laptop </a>
+                <a class="nav-link" href="laptop_query.php"> Laptop </a>
             </li>
             <li class="nav-item" role="presentation">
                 <a class="nav-link" href="../customer/customer_query.php"> Customer </a>
@@ -37,7 +37,7 @@
                 <a class="nav-link" href="../trade/trade_query.php"> Trade </a>
             </li>
             <li class="nav-item" role="presentation">
-                <a class="nav-link" href="../joinsearch/total.php"> Search </a>
+                <a class="nav-link active" href="../joinsearch/total.php"> Search </a>
             </li>
         </ul>
         <?php echo "<span>" . $_SESSION["UserName"] . "</span>"; ?>
