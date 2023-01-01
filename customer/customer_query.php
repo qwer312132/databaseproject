@@ -17,22 +17,22 @@
     <header class="banner">
         <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
             <li class="nav-item" role="presentation">
-                <a class="nav-link " href="index.php">Home </a>
+                <a class="nav-link " href="../index.php">Home </a>
             </li>
             <li class="nav-item" role="presentation">
-                <a class="nav-link" href="laptop_query.php"> Laptop </a>
+                <a class="nav-link" href="../laptop/laptop_query.php"> Laptop </a>
             </li>
             <li class="nav-item" role="presentation">
-                <a class="nav-link active" href="customer_query.php"> Customer </a>
+                <a class="nav-link active" href="../customer/customer_query.php"> Customer </a>
             </li>
             <li class="nav-item" role="presentation">
-                <a class="nav-link" href="supplier_query.php"> Supplier </a>
+                <a class="nav-link" href="../supplier/supplier_query.php"> Supplier </a>
             </li>
             <li class="nav-item" role="presentation">
-                <a class="nav-link" href="trade_query.php"> Trade </a>
+                <a class="nav-link" href="../trade/trade_query.php"> Trade </a>
             </li>
             <li class="nav-item" role="presentation">
-                <a class="nav-link" href="search.php"> Search </a>
+                <a class="nav-link" href="../search.php"> Search </a>
             </li>
         </ul>
         <?php

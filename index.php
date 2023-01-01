@@ -14,22 +14,22 @@
             Detailed transaction information</button>
         <div style="width: 100%; background-color: red;">
         </div>
-        <a href="laptop_query.php">
+        <a href="laptop/laptop_query.php">
             <button type="button" class="btn btn-primary btn-lg index-item">
                 Laptop
             </button>
         </a>
-        <a href="customer_query.php">
+        <a href="customer/customer_query.php">
             <button type="button" class="btn btn-primary btn-lg index-item">
                 Customer
             </button>
         </a>
-        <a href="supplier_query.php">
+        <a href="supplier/supplier_query.php">
             <button type="button" class="btn btn-primary btn-lg index-item">
                 Supplier
             </button>
         </a>
-        <a href="trade_query.php">
+        <a href="trade/trade_query.php">
             <button type="button" class="btn btn-primary btn-lg index-item">
                 Trade
             </button>
