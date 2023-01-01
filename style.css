@@ -80,7 +80,7 @@ body {
 
   height: 1080px;
   width: 100%;
-  text-align:center;
+  text-align:center !important;
   padding-top: 10px;
   padding-left: 72px;
   padding-right: 72px;
@@ -136,4 +136,7 @@ body {
     border-style: solid;
     border-radius: 10px;
 
+}
+th {
+  text-align: center !important;
 }

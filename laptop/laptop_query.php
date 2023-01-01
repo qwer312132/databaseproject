@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
     <title>Laptop</title>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
@@ -14,7 +14,12 @@
     <script src="https://code.jquery.com/jquery-3.6.2.js"
         integrity="sha256-pkn2CUZmheSeyssYw3vMp1+xyub4m+e+QK4sQskvuo4=" crossorigin="anonymous"></script>
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
-
+    <style>
+        th {
+            text-align: center !important;
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" href="../style.css">
 </head>
 
 <body>
@@ -36,18 +41,16 @@
                 <a class="nav-link" href="../trade/trade_query.php"> Trade </a>
             </li>
             <li class="nav-item" role="presentation">
-                <a class="nav-link" href="search.php"> Search </a>
+                <a class="nav-link" href="../joinsearch/total.php"> Search </a>
             </li>
         </ul>
         <?php echo "<span>" . $_SESSION["username"] . "</span>"; ?>
     </header>
     <div class="main">
         <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-            <li class="nav-item" role="presentation" style="display: flex;justify-content: center;align-items: center; ">
+            <li class="nav-item" role="presentation"
+                style="display: flex;justify-content: center;align-items: center; ">
                 <a class="nav-link active" href="customer_query.php">Query</a>
-            </li>
-            <li class="nav-item" role="presentation">
-                <a class="nav-link" href="customer_edit.php">Edit</a>
             </li>
             <li class="nav-item" role="presentation">
                 <button type="button" class="btn btn-primary" id="create">新增</button>
@@ -97,7 +100,8 @@
             <form id="formsearch">
                 <div class='input-group'>
                     <div class='form-outline'>
-                        <input type='search' id='search' placeholder='Search' class='form-control' name='S' style="width: 200px;" />
+                        <input type='search' id='search' placeholder='Search' class='form-control' name='S'
+                            style="width: 200px;" />
                     </div>
                     <button class='btn btn-primary' name='search' id="searchbt" style="float:left">
                         <i class='fas fa-search'></i>
@@ -109,11 +113,11 @@
         <script>
             function exhibit(data) {
                 let statement = "<table class='table table-striped table-dark'>" +
-                "<thead class='thead-dark'>"+
-                "<tr><th scope='col'>ID</th><th scope='col'>laptop_name</th><th scope='col'>supplier_name</th><th scope='col'>price</th><th scope='col'>warranty</th><th scope='col'>more function</th></tr> </thead><tbody>";
+                    "<thead class='thead-dark'>" +
+                    "<tr><th scope='col'>ID</th><th scope='col'>laptop_name</th><th scope='col'>supplier_name</th><th scope='col'>price</th><th scope='col'>warranty</th><th scope='col'>more function</th></tr> </thead><tbody>";
 
                 for (let i = 0; i < data.length; i++) {
-                    statement += "<tr id=tr" + i + "><td id=lap" + i + ">" + data[i].LaptopID + "</td><td id=lname" + i + ">" + data[i].LaptopName + "</td><td id=sname" + i + ">" + data[i].SupplierName +"</td><td id=price" + i + ">" + data[i].Price + "</td><td id=war" + i + ">" + data[i].Warranty + "</td><td>"+
+                    statement += "<tr id=tr" + i + "><td id=lap" + i + ">" + data[i].LaptopID + "</td><td id=lname" + i + ">" + data[i].LaptopName + "</td><td id=sname" + i + ">" + data[i].SupplierName + "</td><td id=price" + i + ">" + data[i].Price + "</td><td id=war" + i + ">" + data[i].Warranty + "</td><td>" +
                         "<button class='btn btn-primary' name='search' id=update" + i + ">....</button>" +
                         "<button class='btn btn-primary' name='search' id=del" + i + ">-</button>" +
                         "</td></tr>";
@@ -128,7 +132,7 @@
                         let sname = $("#sname" + i).text();
                         let price = $("#price" + i).text();
                         let war = $("#war" + i).text();
-                        let statement = "<tr id=tr" + i + "><td id=lap" + i + ">" + id + "</td><td><input type='text' id=lname" + i + " value=" + lname + "></td><td><input type='text' id=sname" + i + " value=" + sname + "></td><td><input type='text' id=price" + i + " value=" + price + "></td><td><input type='text' id=war" + i + " value=" + war + "></td><td>"+
+                        let statement = "<tr id=tr" + i + "><td id=lap" + i + ">" + id + "</td><td><input type='text' id=lname" + i + " value=" + lname + "></td><td><input type='text' id=sname" + i + " value=" + sname + "></td><td><input type='text' id=price" + i + " value=" + price + "></td><td><input type='text' id=war" + i + " value=" + war + "></td><td>" +
                             "<button class='btn btn-primary' name='search' id=update" + i + ">update</button>" +
                             "<button class='btn btn-primary' name='search' id=del" + i + ">-</button>" +
                             "</td></tr>";

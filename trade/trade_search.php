@@ -7,7 +7,7 @@
         $condition =$_POST["condition"];
         array_push($test,$name);
         array_push($test,$condition);
-        $query = sprintf("select * from laptop where %s = ?",$condition);
+        $query = sprintf("select * from trade where %s = ?",$condition);
         $stmt =  $db->prepare($query);
         $stmt->execute(array($name));
         // $query = ("select * from customer where CustomerName = 'A'");
@@ -17,11 +17,10 @@
         $res["data"] = array();
         for($i=0;$i<count($result);$i++){
             $row = array();
+            $row["TradeID"] = $result[$i]['TradeID'];
+            $row["CustomerID"] = $result[$i]['CustomerID'];
             $row["LaptopID"] = $result[$i]['LaptopID'];
-            $row["LaptopName"] = $result[$i]['LaptopName'];
-            $row["SupplierName"] = $result[$i]['SupplierName'];
-            $row["Price"] = $result[$i]['Price'];
-            $row["Warranty"] = $result[$i]['Warranty(year)'];
+            $row["TradeDate"] = $result[$i]['TradeDate'];
             array_push($res["data"],$row);
         }
         $res["status"] = 200;

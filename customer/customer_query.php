@@ -11,6 +11,12 @@
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" />
     <script src="https://code.jquery.com/jquery-3.6.2.js" integrity="sha256-pkn2CUZmheSeyssYw3vMp1+xyub4m+e+QK4sQskvuo4=" crossorigin="anonymous"></script>
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <style>
+        th {
+            text-align: center !important;
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" href="../style.css">
 </head>
 
 <body>
@@ -32,7 +38,7 @@
                 <a class="nav-link" href="../trade/trade_query.php"> Trade </a>
             </li>
             <li class="nav-item" role="presentation">
-                <a class="nav-link" href="../search.php"> Search </a>
+                <a class="nav-link" href="../joinsearch/total.php"> Search </a>
             </li>
         </ul>
         <?php
@@ -43,9 +49,6 @@
         <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
             <li class="nav-item" role="presentation">
                 <a class="nav-link active" href="customer_query.php">Query</a>
-            </li>
-            <li class="nav-item" role="presentation">
-                <a class="nav-link" href="customer_edit.php">Edit</a>
             </li>
             <li class="nav-item" role="presentation" style="display: flex;justify-content: center;align-items: center; ">
                 <button type="button" class="btn btn-primary" id="create">新增</button>
@@ -131,7 +134,7 @@
                                     phone: phone
                                 },
                                 success: function(data) {
-                                    alert(data);
+                                    alert(data.message);
                                     location.reload();
                                 }
                             });
