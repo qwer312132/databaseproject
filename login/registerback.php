@@ -5,7 +5,7 @@
         $useremail = $_POST["useremail"];
         $pass = $_POST["pass"];
 
-        include 'db_conn.php';
+        include '../db_conn.php';
         $query = ("INSERT INTO user VALUES (?,?,?,?)");
         $stmt =  $db->prepare($query);
         $result = $stmt->execute(array(0,$name,$useremail,$pass));

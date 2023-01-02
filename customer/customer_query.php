@@ -40,20 +40,20 @@
             <li class="nav-item" role="presentation">
                 <a class="nav-link" href="../joinsearch/total.php"> Search </a>
             </li>
-            <a style="width: 400px;"></a>
+            <a style="width: 700px;"></a>
             <li class="nav-item" role="presentation" style="display: flex;justify-content: center;align-items: center; ">
                 <img src="https://cdn-icons-png.flaticon.com/512/6386/6386976.png" width="20px" height="20px">
             </li>
             <li class="nav-item" role="presentation">
-                <a class="nav-link"> UserName </a>
+                <?php
+                echo "<a class='nav-link'>" . $_SESSION['UserName'] . "</a>"
+                ?>
             </li>
             <li class="nav-item" role="presentation">
-                <a class="nav-link"> Sign Out</a>
+                <a class="nav-link" onclick="out()"> Sign Out</a>
             </li>
         </ul>
-        <?php
-        // echo "<span>" . $_SESSION['UserName'] . "</span>"
-        ?>
+
     </header>
     <div style="display:none;position: fixed;top:10%;left:0%;z-index:100" id="ale"><button type="button" class="btn btn-danger" id="alemessage" style="font-size:medium">Danger</button></div>
     <div class="main">
@@ -106,6 +106,18 @@
         </div>
         <div id="maintable"></div>
         <script>
+            function out() {
+                $.ajax({
+                    url: "../login/logout.php",
+                    type: "POST",
+                    data: {
+                    },
+                    success: function(data) {
+                        window.location.href = "../login/login.php";
+                    }
+                });
+            }
+
             function exhibit(data) {
                 let statement = "<table class='table table-striped table-dark'>" +
                     "<thead class='thead-dark'>" +

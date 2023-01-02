@@ -106,14 +106,17 @@
             if (data.message == "使用者不存在") 
             {
                 alert("使用者不存在");
+                return false;
             } 
             else if (data.message == "密碼錯誤") 
             {
                 alert("密碼錯誤");
+                return false;
             } 
             else 
             {
                 alert("登入成功");
+                return true;
             }
         };
 
@@ -122,6 +125,7 @@
             event.preventDefault();
             let useremail = $("#loginEmail").val();
             let pass = $("#loginPassword").val();
+            let jump = false;
             if (useremail == "" || pass == "") {
                 alert("請輸入完整資料");
                 return;
@@ -137,11 +141,18 @@
                     {
                         res = JSON.parse(res);
                         console.log(res);
-                        check(res);
+                        jump = check(res);
                     }
                 });
             }
-            location.href = "../index.php";
+            if (jump)
+            {
+                location.href = "../index.php";
+            }
+            else
+            {
+                return;
+            }
         });
 
         $("#register").on("submit", function(event) {
@@ -159,7 +170,7 @@
                 return;
             } else if (pass == repeatpass) {
                 $.ajax({
-                    url: "register.php",
+                    url: "registerback.php",
                     method: "post",
                     data: {
                         name: name,
@@ -171,7 +182,7 @@
                         console.log(res);
                     }
                 });
-                location.href = "Login.php";
+                // location.href = "login.php";
             }
         });
     </script>

@@ -5,15 +5,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Laptop</title>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
-        crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" />
-    <script src="https://code.jquery.com/jquery-3.6.2.js"
-        integrity="sha256-pkn2CUZmheSeyssYw3vMp1+xyub4m+e+QK4sQskvuo4=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.2.js" integrity="sha256-pkn2CUZmheSeyssYw3vMp1+xyub4m+e+QK4sQskvuo4=" crossorigin="anonymous"></script>
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
     <!--引入 element-ui 的样式，-->
     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
@@ -50,14 +46,20 @@
             <li class="nav-item" role="presentation">
                 <a class="nav-link" href="../joinsearch/total.php"> Search </a>
             </li>
+            <li class="nav-item" role="presentation">
+                <?php
+                echo "<a class='nav-link'>" . $_SESSION['UserName'] . "</a>"
+                ?>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a class="nav-link" onclick="out()"> Sign Out</a>
+            </li>
         </ul>
-        <?php echo "<span>" . $_SESSION["UserName"] . "</span>"; ?>
     </header>
     <div style="display:none;position: fixed;top:10%;left:0%;z-index:100" id="ale"><button type="button" class="btn btn-danger" id="alemessage" style="font-size:medium">Danger</button></div>
     <div class="main">
         <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-            <li class="nav-item" role="presentation"
-                style="display: flex;justify-content: center;align-items: center; ">
+            <li class="nav-item" role="presentation" style="display: flex;justify-content: center;align-items: center; ">
                 <a class="nav-link active" href="customer_query.php">Query</a>
             </li>
             <li class="nav-item" role="presentation">
@@ -67,8 +69,7 @@
         <div>
             <form style="text-align: left;margin-bottom: 10px;" method='post'>
                 <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdown"
-                        data-bs-toggle="dropdown" aria-expanded="false">all</button>
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdown" data-bs-toggle="dropdown" aria-expanded="false">all</button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                         <li>
                             <button name='all' class="btn btn-light btn-block" id="all" onclick="dropdownvalue('all')">
@@ -76,32 +77,27 @@
                             </button>
                         </li>
                         <li>
-                            <button name='lid' class="btn btn-light btn-block" id="lid"
-                                onclick="dropdownvalue('LaptopID')">
+                            <button name='lid' class="btn btn-light btn-block" id="lid" onclick="dropdownvalue('LaptopID')">
                                 ID
                             </button>
                         </li>
                         <li>
-                            <button name='lname' class="btn btn-light btn-block" id="lame"
-                                onclick="dropdownvalue('LaptopName')">
+                            <button name='lname' class="btn btn-light btn-block" id="lame" onclick="dropdownvalue('LaptopName')">
                                 LaptopName
                             </button>
                         </li>
                         <li>
-                            <button name='sname' class="btn btn-light btn-block" id="sname"
-                                onclick="dropdownvalue('SupplierName')">
+                            <button name='sname' class="btn btn-light btn-block" id="sname" onclick="dropdownvalue('SupplierName')">
                                 SupplierName
                             </button>
                         </li>
                         <li>
-                            <button name='price' class="btn btn-light btn-block" id="price"
-                                onclick="dropdownvalue('Price')">
+                            <button name='price' class="btn btn-light btn-block" id="price" onclick="dropdownvalue('Price')">
                                 Price
                             </button>
                         </li>
                         <li>
-                            <button name='warranty' class="btn btn-light btn-block" id="warranty"
-                                onclick="dropdownvalue('Warranty')">
+                            <button name='warranty' class="btn btn-light btn-block" id="warranty" onclick="dropdownvalue('Warranty')">
                                 Warranty
                             </button>
                         </li>
@@ -111,8 +107,7 @@
             <form id="formsearch">
                 <div class='input-group'>
                     <div class='form-outline'>
-                        <input type='search' id='search' placeholder='all' class='form-control' name='S'
-                            style="width: 200px;" />
+                        <input type='search' id='search' placeholder='all' class='form-control' name='S' style="width: 200px;" />
                     </div>
                     <button class='btn btn-primary' name='search' id="searchbt" style="float:left">
                         <i class='fas fa-search'></i>
@@ -122,6 +117,17 @@
         </div>
         <div id="maintable"></div>
         <script>
+            function out() {
+                $.ajax({
+                    url: "../login/logout.php",
+                    type: "POST",
+                    data: {},
+                    success: function(data) {
+                        window.location.href = "../login/login.php";
+                    }
+                });
+            }
+
             function exhibit(data, m, M, a) {
                 let statement = "<table class='table table-striped table-dark'>" +
                     "<thead class='thead-dark'>" +
@@ -136,7 +142,7 @@
                 let min = "<div style='font-size: 20px;;color:white;background-color: white;text-shadow: 0 0 5px #5b947f, 0 0 5px #5b947f, 0 0 5px #5b947f, 0 0 5px #5b947f; font-weight: bold;'>MIN PRICE = " + m + " AVEARGE PRICE = " + a + " MAX PRICE = " + M + "</div>";
                 $("#maintable").html(min + statement);
                 for (let i = 0; i < data.length; i++) {
-                    $("#update" + i).click(function () {
+                    $("#update" + i).click(function() {
                         event.preventDefault();
                         let id = $("#lap" + i).text();
                         let lname = $("#lname" + i).text();
@@ -148,7 +154,7 @@
                             "<button class='btn btn-primary' name='search' id=del" + i + ">-</button>" +
                             "</td></tr>";
                         $("#tr" + i).replaceWith(statement);
-                        $("#update" + i).click(function () {
+                        $("#update" + i).click(function() {
                             event.preventDefault();
                             let id = $("#lap" + i).text();
                             let lname = $("#lname" + i).text();
@@ -165,14 +171,14 @@
                                     price: price,
                                     war: war
                                 },
-                                success: function (data) {
+                                success: function(data) {
                                     location.reload();
                                 }
                             });
                         });
                     });
 
-                    $("#del" + i).click(function () {
+                    $("#del" + i).click(function() {
                         event.preventDefault();
                         let id = $("#lap" + i).text();
                         $.ajax({
@@ -181,7 +187,7 @@
                             data: {
                                 id: id
                             },
-                            success: function (data) {
+                            success: function(data) {
                                 location.reload();
                             }
                         });
@@ -189,7 +195,7 @@
                 }
             };
 
-            $("#create").click(function () {
+            $("#create").click(function() {
                 event.preventDefault();
                 let statement = "<tr ><td>" +
                     "<input type='text'  class='form-control' disabled='disabled'>" +
@@ -205,7 +211,7 @@
                     "<button class='btn btn-primary' name='search' id='po'><i class='fa fa-check' aria-hidden='true'></i></button>" +
                     "</td></tr>";
                 $('#tr0').before(statement);
-                $("#po").click(function () {
+                $("#po").click(function() {
                     event.preventDefault();
                     let lname = $("#newlname").val();
                     let sname = $("#newsname").val();
@@ -221,14 +227,13 @@
                             price: price,
                             war: war
                         },
-                        success: function (res) {
+                        success: function(res) {
                             res = JSON.parse(res);
                             console.log(res);
-                            if (res.status == 500){
+                            if (res.status == 500) {
                                 document.getElementById("ale").style.display = "block";
                                 $("#alemessage").text(res.message);
-                            }
-                            else
+                            } else
                                 location.reload();
                         }
                     });
@@ -237,9 +242,9 @@
 
 
 
-            $("#searchbt").click(function (event) {
+            $("#searchbt").click(function(event) {
                 event.preventDefault();
-                
+
                 let search = $("#search").val();
                 let condition = $("#dropdown").text();
                 if (search == "" && condition != "all") {
@@ -256,7 +261,7 @@
                             search: search,
                             condition: condition
                         },
-                        success: function (res) {
+                        success: function(res) {
                             res = JSON.parse(res);
                             // console.log(res);
                             exhibit(res.data, res.min, res.max, res.avg);
@@ -270,12 +275,10 @@
                 $("#dropdown").html(x);
                 $("#search").attr("placeholder", x);
             };
-            $("#ale").click(function (event) {
+            $("#ale").click(function(event) {
                 $("#ale").hide();
                 location.reload();
             });
-
-
         </script>
         <!-- customer_query.php -->
         <!--  -->
