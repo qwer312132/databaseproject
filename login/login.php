@@ -131,6 +131,7 @@
                 return;
             } else {
                 $.ajax({
+                    async: false,
                     url: "loginback.php",
                     method: "post",
                     data: {

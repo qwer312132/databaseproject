@@ -101,6 +101,11 @@
                                 Warranty
                             </button>
                         </li>
+                        <li>
+                            <button name='warranty' class="btn btn-light btn-block" id="avgup" onclick="dropdownvalue('avgup')">
+                                Avgup
+                            </button>
+                        </li>
                     </ul>
                 </div>
             </form>
@@ -263,7 +268,7 @@
                         },
                         success: function(res) {
                             res = JSON.parse(res);
-                            // console.log(res);
+                            console.log(res);
                             exhibit(res.data, res.min, res.max, res.avg);
                         }
                     });
@@ -273,7 +278,10 @@
             function dropdownvalue(x) {
                 event.preventDefault();
                 $("#dropdown").html(x);
-                $("#search").attr("placeholder", x);
+                if (x != "avgup")
+                    $("#search").attr("placeholder", x);
+                else 
+                    $("#search").attr("placeholder", "SupplierName");
             };
             $("#ale").click(function(event) {
                 $("#ale").hide();

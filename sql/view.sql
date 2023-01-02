@@ -1,0 +1,1 @@
+create view laptop_sname_view as select * from laptop where SupplierName = 'sname';
