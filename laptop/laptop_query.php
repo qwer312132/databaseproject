@@ -46,6 +46,10 @@
             <li class="nav-item" role="presentation">
                 <a class="nav-link" href="../joinsearch/total.php"> Search </a>
             </li>
+            <a style="width: 700px;"></a>
+            <li class="nav-item" role="presentation" style="display: flex;justify-content: center;align-items: center; ">
+                <img src="https://cdn-icons-png.flaticon.com/512/6386/6386976.png" width="20px" height="20px">
+            </li>
             <li class="nav-item" role="presentation">
                 <?php
                 echo "<a class='nav-link'>" . $_SESSION['UserName'] . "</a>"
@@ -62,7 +66,7 @@
             <li class="nav-item" role="presentation" style="display: flex;justify-content: center;align-items: center; ">
                 <a class="nav-link active" href="customer_query.php">Query</a>
             </li>
-            <li class="nav-item" role="presentation">
+            <li class="nav-item" role="presentation" style="display: flex;justify-content: center;align-items: center; ">
                 <button type="button" class="btn btn-primary" id="create">新增</button>
             </li>
         </ul>
@@ -154,7 +158,7 @@
                         let sname = $("#sname" + i).text();
                         let price = $("#price" + i).text();
                         let war = $("#war" + i).text();
-                        let statement = "<tr id=tr" + i + "><td id=lap" + i + ">" + id + "</td><td><input type='text' id=lname" + i + " value=" + lname + "></td><td><input type='text' id=sname" + i + " value=" + sname + "></td><td><input type='text' id=price" + i + " value=" + price + "></td><td><input type='text' id=war" + i + " value=" + war + "></td><td>" +
+                        let statement = "<tr id=tr" + i + "><td id=lap" + i + ">" + id + "</td><td><input type='text' class='form-control' id=lname" + i + " value=" + lname + "></td><td><input type='text' class='form-control' id=sname " + i + " value=" + sname + "></td><td><input type='text' class='form-control' id=price " + i + " value=" + price + "></td><td><input type='text' class='form-control' id=war" + i + " value=" + war + "></td><td>" +
                             "<button class='btn btn-primary' name='search' id=update" + i + ">update</button>" +
                             "<button class='btn btn-primary' name='search' id=del" + i + ">-</button>" +
                             "</td></tr>";
@@ -280,7 +284,7 @@
                 $("#dropdown").html(x);
                 if (x != "avgup")
                     $("#search").attr("placeholder", x);
-                else 
+                else
                     $("#search").attr("placeholder", "SupplierName");
             };
             $("#ale").click(function(event) {

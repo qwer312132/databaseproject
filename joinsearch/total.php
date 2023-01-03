@@ -21,7 +21,7 @@
                 <a class="nav-link " href="../index.php">Home </a>
             </li>
             <li class="nav-item" role="presentation">
-                <a class="nav-link" href="laptop_query.php"> Laptop </a>
+                <a class="nav-link" href="../laptop/laptop_query.php"> Laptop </a>
             </li>
             <li class="nav-item" role="presentation">
                 <a class="nav-link" href="../customer/customer_query.php"> Customer </a>
@@ -88,13 +88,13 @@
                 $.ajax({
                     url: "../login/logout.php",
                     type: "POST",
-                    data: {
-                    },
+                    data: {},
                     success: function(data) {
                         window.location.href = "../login/login.php";
                     }
                 });
             }
+
             function exhibit(data) {
                 let statement = "<table class='table table-striped table-dark'>" +
                     "<thead class='thead-dark'>" +
