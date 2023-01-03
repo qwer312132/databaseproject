@@ -158,18 +158,21 @@
                         let sname = $("#sname" + i).text();
                         let price = $("#price" + i).text();
                         let war = $("#war" + i).text();
-                        let statement = "<tr id=tr" + i + "><td id=lap" + i + ">" + id + "</td><td><input type='text' class='form-control' id=lname" + i + " value=" + lname + "></td><td><input type='text' class='form-control' id=sname " + i + " value=" + sname + "></td><td><input type='text' class='form-control' id=price " + i + " value=" + price + "></td><td><input type='text' class='form-control' id=war" + i + " value=" + war + "></td><td>" +
+                        let statement = "<tr id=tr" + i + "><td id=lap" + i + ">" + id + "</td><td><input type='text' class='form-control' id=lname" + i + " value=" + lname + "></td><td><input type='text' class='form-control' id=sname" + i + " value=" + sname + "></td><td><input type='text' class='form-control' id=price" + i + " value=" + price + "></td><td><input type='text' class='form-control' id=war" + i + " value=" + war + "></td><td>" +
                             "<button class='btn btn-primary' name='search' id=update" + i + ">update</button>" +
                             "<button class='btn btn-primary' name='search' id=del" + i + ">-</button>" +
                             "</td></tr>";
                         $("#tr" + i).replaceWith(statement);
+                        console.log(id, lname, sname, price, war);
                         $("#update" + i).click(function() {
                             event.preventDefault();
                             let id = $("#lap" + i).text();
-                            let lname = $("#lname" + i).text();
-                            let sname = $("#sname" + i).text();
-                            let price = $("#price" + i).text();
-                            let war = $("#war" + i).text();
+                            let lname = $("#lname" + i).val();
+                            let sname = $("#sname" + i).val();
+                            let price = $("#price" + i).val();
+                            let war = $("#war" + i).val();
+                            console.log(id, lname, sname, price, war);
+
                             $.ajax({
                                 url: "laptop_update.php",
                                 type: "POST",
@@ -181,6 +184,7 @@
                                     war: war
                                 },
                                 success: function(data) {
+
                                     location.reload();
                                 }
                             });

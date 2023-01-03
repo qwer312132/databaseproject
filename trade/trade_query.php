@@ -155,9 +155,10 @@
                         $("#update" + i).click(function() {
                             event.preventDefault();
                             let tid = $("#tid" + i).text();
-                            let cid = $("#cid" + i).text();
-                            let lid = $("#lid" + i).text();
-                            let tdate = $("#tdate" + i).text();
+                            let cid = $("#cid" + i).val();
+                            let lid = $("#lid" + i).val();
+                            let tdate = $("#tdate" + i).val();
+                            console.log(tid, cid, lid, tdate);
                             $.ajax({
                                 url: "trade_update.php",
                                 type: "POST",
