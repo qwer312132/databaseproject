@@ -20,7 +20,7 @@
             $row["CustomerName"] = $result[$i]['CustomerName'];
             $row["CustomerPhone"] = $result[$i]['CustomerPhone'];
             $row["LaptopName"] = $result[$i]['LaptopName'];
-            $row["Warranty"] = $result[$i]['Warranty(year)'];
+            $row["Warranty"] = $result[$i]['Warranty'];
             $row["SupplierName"] = $result[$i]['SupplierName'];
             array_push($res["data"],$row);
         }

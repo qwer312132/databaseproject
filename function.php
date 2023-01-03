@@ -14,10 +14,4 @@
         }
         return $i;
     }
-
-    create function de()
-    returns int
-    begin
-    
-
 ?>

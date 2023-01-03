@@ -32,7 +32,7 @@ try {
         $row["LaptopName"] = $result[$i]['LaptopName'];
         $row["SupplierName"] = $result[$i]['SupplierName'];
         $row["Price"] = $result[$i]['Price'];
-        $row["Warranty"] = $result[$i]['Warranty(year)'];
+        $row["Warranty"] = $result[$i]['Warranty'];
         array_push($res["data"], $row);
     }
     if ($condition != "avgup") {

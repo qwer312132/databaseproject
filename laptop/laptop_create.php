@@ -19,6 +19,9 @@ try {
         $i = $i + 1;
     }
 
+    if($war == ''){
+        $war = null;
+    }
     $query = ("INSERT INTO laptop VALUES (?,?,?,?,?)");
     $stmt = $db->prepare($query);
     $result = $stmt->execute(array($i, $lname, $sname, $price, $war));

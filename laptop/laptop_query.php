@@ -144,7 +144,7 @@
                         "<button class='btn btn-primary' name='search' id=del" + i + ">-</button>" +
                         "</td></tr>";
                 }
-                let min = "<div style='font-size: 20px;;color:white;background-color: white;text-shadow: 0 0 5px #5b947f, 0 0 5px #5b947f, 0 0 5px #5b947f, 0 0 5px #5b947f; font-weight: bold;'>MIN PRICE = " + m + " AVEARGE PRICE = " + a + " MAX PRICE = " + M + "</div>";
+                let min = "<div style='font-size: 20px;;color:white;background-color: white;text-shadow: 0 0 5px #5b947f, 0 0 5px #5b947f, 0 0 5px #5b947f, 0 0 5px #5b947f; font-weight: bold;'>MIN PRICE = " + m + "   AVEARGE PRICE = " + a + "   MAX PRICE = " + M + "</div>";
                 $("#maintable").html(min + statement);
                 for (let i = 0; i < data.length; i++) {
                     $("#update" + i).click(function() {
